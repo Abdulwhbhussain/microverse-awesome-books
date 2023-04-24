@@ -4,3 +4,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.container {
+  width: 40%;
+  background-color: burlywood;
+  height: auto;
+  border-radius: 20px;
+}
