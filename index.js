@@ -1,21 +1,12 @@
-document.addEventListener('', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // A collection that keeps a list of books.
   const bookList = document.querySelector('#book-list');
   let collectionOfBooks = [];
-  if (!localStorage.getItem('collectionOfBooks')) {
-    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
-  } else {
-    collectionOfBooks = JSON.parse(localStorage.getItem('collectionOfBooks'));
-    bookOnHtmlPage(collectionOfBooks);
-  }
-
-    removeFunction();
-
   function bookOnHtmlPage(books) {
     books.forEach((book, id) => {
       const bookItem = document.createElement('li');
       bookItem.setAttribute('id', `book-item-${id}`);
-      bookItem.setAttribute('class', 'book-item');
+      bookItem.setAttribute('class', `book-item`);
       bookItem.innerHTML = `<center>
     <h3>${book.title}</h3>
     <p>${book.author}</p>
@@ -24,32 +15,9 @@ document.addEventListener('', () => {
     </center>`;
       bookList.appendChild(bookItem);
     });
-  }
-
-  const bookOnHtmlPage = () => {
-    document.querySelectorAll('.book-item').forEach((book, id) => {
-      book.remove();
-    });
   };
-
-    // Add a new book to the collection with title and author.
-
-  document.querySelector('#submit-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    const title = document.querySelector('#title').value;
-    document.querySelector('#title').value = '';
-    const author = document.querySelector('#author').value;
-    document.querySelector('#author').value = '';
-    collectionOfBooks.push({ title, author });
-    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
-    bookOnHtmlPageRemove();
-    bookOnHtmlPage(collectionOfBooks);
-    removeFunction();
-  });
-
-    // Remove a book from the collection.
-
-    function removeFunction() {
+  // Remove a book from the collection.
+  function removeFunction() {
     if (collectionOfBooks.length > 0) {
       collectionOfBooks.forEach((book, id) => {
         document.querySelector(`#remove-btn-${id}`).addEventListener('click', (e) => {
@@ -65,4 +33,29 @@ document.addEventListener('', () => {
       });
     }
   }
+  function bookOnHtmlPageRemove() {
+    document.querySelectorAll('.book-item').forEach((book, id) => {
+      book.remove();
+    });
+  };
+  if (!localStorage.getItem('collectionOfBooks')) {
+    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
+  } else {
+    collectionOfBooks = JSON.parse(localStorage.getItem('collectionOfBooks'));
+    bookOnHtmlPage(collectionOfBooks);
+  }
+  removeFunction();
+  // Add a new book to the collection with title and author.
+  document.querySelector('#submit-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    document.querySelector('#title').value = '';
+    const author = document.querySelector('#author').value;
+    document.querySelector('#author').value = '';
+    collectionOfBooks.push({ title, author });
+    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
+    bookOnHtmlPageRemove();
+    bookOnHtmlPage(collectionOfBooks);
+    removeFunction();
+  });
 });
