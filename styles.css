@@ -20,3 +20,7 @@ button {
   margin-bottom: 10px;
   border-radius: 5px;
 }
+
+ul {
+  list-style: none;
+}
