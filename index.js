@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const bookItem = document.createElement('li');
       bookItem.setAttribute('id', `book-item-${id}`);
       bookItem.setAttribute('class', `book-item`);
-      bookItem.innerHTML = `<center>
+      bookItem.innerHTML = `<div>
     <h3>${book.title}</h3>
     <p>${book.author}</p>
     <button id=remove-btn-${id} class='remove-btn'>Remove</button>
-    <hr style='width: 50%;'>
-    </center>`;
+    <hr style='width: 50%; margin-left: 0;'>
+    </div>`;
       bookList.appendChild(bookItem);
     });
   };
