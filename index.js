@@ -1,24 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // A collection that keeps a list of books.
-  const library = new Library(document);
-  const bookList = library.getElement('#book-list');
-  const collectionOfBooks = [];
-
-  // Initialize the library if we have any books stored
-  library.initialize(collectionOfBooks, bookList);
-
-  // Add a new book to the collection with title and author.
-  library.getElement('#submit-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    collectionOfBooks.push(library.getInputValues());
-    library.clearInputs();
-
-    library.saveBook(collectionOfBooks);
-    library.removeBookOnHtmlPage();
-    library.displayBooks(collectionOfBooks, bookList);
-  });
-});
-
 class Library { 
 
   constructor(document) {
@@ -98,3 +77,24 @@ class Library {
     return this.document.querySelectorAll(selector);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // A collection that keeps a list of books.
+  const library = new Library(document);
+  const bookList = library.getElement('#book-list');
+  const collectionOfBooks = [];
+
+  // Initialize the library if we have any books stored
+  library.initialize(collectionOfBooks, bookList);
+
+  // Add a new book to the collection with title and author.
+  library.getElement('#submit-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    collectionOfBooks.push(library.getInputValues());
+    library.clearInputs();
+
+    library.saveBook(collectionOfBooks);
+    library.removeBookOnHtmlPage();
+    library.displayBooks(collectionOfBooks, bookList);
+  });
+});
