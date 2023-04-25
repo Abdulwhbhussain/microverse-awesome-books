@@ -78,6 +78,14 @@ h3 {
 
 .book-item {
   margin: 0%;
-  padding: 0%;
   line-height: 60px;
+  padding: 10px;
+}
+
+.book-item:nth-child(odd) {
+  background-color: #b9833d;
+}
+
+.book-item:nth-child(even) {
+  background-color: #7e9a9a;
 }
