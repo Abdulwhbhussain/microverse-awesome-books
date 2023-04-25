@@ -30,16 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
       collectionOfBooks.forEach((book, id) => {
         document.querySelector(`#remove-btn-${id}`).addEventListener('click', (e) => {
           e.preventDefault();
-        //   if (collectionOfBooks.length === 1) {
-        //     collectionOfBooks.pop();
-        //   } else {
-        //     collectionOfBooks.splice(id, 1);
-        //   }
           collectionOfBooks = collectionOfBooks.filter((bk) => bk !== book);
           localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
           document.querySelector(`#book-item-${id}`).remove();
-        //   bookOnHtmlPageRemove();
-        //   bookOnHtmlPage(collectionOfBooks);
         });
       });
     }
