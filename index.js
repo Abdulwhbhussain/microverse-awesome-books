@@ -1,7 +1,8 @@
-class Library { 
+class Library {
 
-  constructor(document) {
+  constructor(document, localStorage) {
     this.document = document;
+    this.localStorage = localStorage;
   }
 
   initialize(collectionOfBooks, bookList) {
@@ -11,11 +12,12 @@ class Library {
       collectionOfBooks = JSON.parse(this.getBooks());
       this.displayBooks(collectionOfBooks, bookList);
     }
+    console.log(collectionOfBooks);
     this.removeBook(collectionOfBooks);
   }
 
   getBooks() {
-    return localStorage.getItem('collectionOfBooks');
+    return this.localStorage.getItem('collectionOfBooks');
   }
 
   removeBook(collectionOfBooks) {
@@ -38,12 +40,12 @@ class Library {
   }
 
   saveBook(collectionOfBooks) {
-    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
+    this.localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
   }
 
   displayBooks(books, bookList) {
     books.forEach((book, id) => {
-      const bookItem = document.createElement('li');
+      const bookItem = this.document.createElement('li');
       bookItem.setAttribute('id', `book-item-${id}`);
       bookItem.setAttribute('class', 'book-item');
       bookItem.innerHTML = `<div class='book-item-div'>
@@ -63,9 +65,9 @@ class Library {
   }
 
   getInputValues() {
-    return { 
+    return {
       title: this.getElement('#title').value,
-      author: this.getElement('#author').value
+      author: this.getElement('#author').value,
     };
   }
 
@@ -80,7 +82,7 @@ class Library {
 
 document.addEventListener('DOMContentLoaded', () => {
   // A collection that keeps a list of books.
-  const library = new Library(document);
+  const library = new Library(document, localStorage);
   const bookList = library.getElement('#book-list');
   const collectionOfBooks = [];
 
