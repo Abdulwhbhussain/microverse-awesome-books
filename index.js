@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // A collection that keeps a list of books.
   const library = new Library(document);
   const bookList = library.getElement('#book-list');
-  let collectionOfBooks = [];
+  const collectionOfBooks = [];
 
   // Initialize the library if we have any books stored
   library.initialize(collectionOfBooks, bookList);
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-class Library {
-  
+class Library { 
+
   constructor(document) {
     this.document = document;
   }
@@ -84,8 +84,10 @@ class Library {
   }
 
   getInputValues() {
-    return {title: this.getElement('#title').value, 
-    author: this.getElement('#author').value };
+    return { 
+      title: this.getElement('#title').value,
+      author: this.getElement('#author').value
+    };
   }
 
   getElement(selector) {
