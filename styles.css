@@ -78,6 +78,14 @@ h3 {
 
 .book-item {
   margin: 0%;
-  padding: 0%;
+  padding: 0 10px;
   line-height: 60px;
+}
+
+.book-item:nth-of-type(odd) {
+  background-color: #7e9a9a;
+}
+
+.book-item:nth-of-type(even) {
+  background-color: #db9833;
 }
