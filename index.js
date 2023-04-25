@@ -1,5 +1,4 @@
 class Library {
-
   constructor(document, localStorage) {
     this.document = document;
     this.localStorage = localStorage;
@@ -12,7 +11,6 @@ class Library {
       collectionOfBooks = JSON.parse(this.getBooks());
       this.displayBooks(collectionOfBooks, bookList);
     }
-    console.log(collectionOfBooks);
     this.removeBook(collectionOfBooks);
   }
 
