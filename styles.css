@@ -7,9 +7,12 @@ body {
 
 .container {
   width: 30%;
+
   /* background-color: burlywood; */
   height: auto;
+
   /* border-radius: 20px; */
+
   /* padding: 2%; */
   display: flex;
   flex-direction: column;
@@ -31,7 +34,8 @@ button {
 
 ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0%;
+  margin: 0%;
 }
 
 .book-list {
@@ -55,7 +59,7 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
 
 h2,
@@ -64,11 +68,6 @@ h3 {
   padding: 0%;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-ul {
-  padding: 0%;
-  margin: 0%;
 }
 
 #button-div {
