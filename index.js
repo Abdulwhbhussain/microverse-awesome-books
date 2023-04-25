@@ -8,12 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const bookItem = document.createElement('li');
       bookItem.setAttribute('id', `book-item-${id}`);
       bookItem.setAttribute('class', 'book-item');
-      bookItem.innerHTML = `<div>
-    <h3>${book.title}</h3>
-    <p>${book.author}</p>
+      if(id % 2 === 0) {
+        bookItem.setAttribute('style', 'background-color: #db9833; padding: 10px;');
+      } else {
+        bookItem.setAttribute('style', 'background-color: #7e9a9a; padding: 10px;');
+      }
+      bookItem.innerHTML = `<div class='book-item-div'>
+      <div><span><b>"${book.title}"</b></span> <span> by </span>
+      <span>${book.author}</span></div>
+    
     <button id=remove-btn-${id} class='remove-btn'>Remove</button>
-    <hr style='width: 50%; margin-left: 0;'>
-    </div>`;
+    </div>
+    `;
       bookList.appendChild(bookItem);
     });
   }
