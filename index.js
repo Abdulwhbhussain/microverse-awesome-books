@@ -2,16 +2,19 @@ class Library {
   constructor(document, localStorage) {
     this.document = document;
     this.localStorage = localStorage;
+    this.bookList = this.getElement('#book-list');
+    this.collectionOfBooks = [];
   }
 
-  initialize(collectionOfBooks, bookList) {
+  initialize() {
     if (!this.getBooks()) {
-      this.saveBook(collectionOfBooks);
+      this.saveBook(this.collectionOfBooks);
     } else {
-      collectionOfBooks = JSON.parse(this.getBooks());
-      this.displayBooks(collectionOfBooks, bookList);
+      this.collectionOfBooks = JSON.parse(this.getBooks());
+      this.displayBooks(this.collectionOfBooks, this.bookList);
     }
-    this.removeBook(collectionOfBooks);
+    this.removeBook(this.collectionOfBooks);
+    this.collectionOfBooks = [];
   }
 
   getBooks() {
@@ -24,8 +27,10 @@ class Library {
         this.getElement(`#remove-btn-${id}`).addEventListener('click', (e) => {
           e.preventDefault();
           collectionOfBooks = collectionOfBooks.filter((bk) => bk !== book);
-          this.saveBook(collectionOfBooks);
           this.getElement(`#book-item-${id}`).remove();
+          this.saveBook(collectionOfBooks);
+          console.log(collectionOfBooks);
+          collectionOfBooks = [];
         });
       });
     }
@@ -39,9 +44,19 @@ class Library {
 
   saveBook(collectionOfBooks) {
     this.localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
+    collectionOfBooks = [];
   }
 
-  displayBooks(books, bookList) {
+  newBook() {
+    this.collectionOfBooks.push(this.getInputValues());
+    this.clearInputs();
+
+    this.saveBook(this.collectionOfBooks);
+    this.removeBookOnHtmlPage();
+    this.displayBooks(this.collectionOfBooks, this.bookList);
+  }
+
+  displayBooks(books) {
     books.forEach((book, id) => {
       const bookItem = this.document.createElement('li');
       bookItem.setAttribute('id', `book-item-${id}`);
@@ -53,8 +68,9 @@ class Library {
       <button id=remove-btn-${id} class='remove-btn'>Remove</button>
       </div>
       `;
-      bookList.appendChild(bookItem);
+      this.bookList.appendChild(bookItem);
     });
+    this.removeBook(books);
   }
 
   clearInputs() {
@@ -81,20 +97,13 @@ class Library {
 document.addEventListener('DOMContentLoaded', () => {
   // A collection that keeps a list of books.
   const library = new Library(document, localStorage);
-  const bookList = library.getElement('#book-list');
-  const collectionOfBooks = [];
 
   // Initialize the library if we have any books stored
-  library.initialize(collectionOfBooks, bookList);
+  library.initialize();
 
   // Add a new book to the collection with title and author.
   library.getElement('#submit-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    collectionOfBooks.push(library.getInputValues());
-    library.clearInputs();
-
-    library.saveBook(collectionOfBooks);
-    library.removeBookOnHtmlPage();
-    library.displayBooks(collectionOfBooks, bookList);
+    library.newBook();
   });
 });
