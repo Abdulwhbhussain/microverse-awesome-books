@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',  () => {
+document.addEventListener('DOMContentLoaded', () => {
   // A collection that keeps a list of books.
   const bookList = document.querySelector('#book-list');
   let collectionOfBooks = [];
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded',  () => {
     completeDateAndTime += dateAndTime.toLocaleDateString();
     completeDateAndTime += ',  ';
     completeDateAndTime += dateAndTime.toLocaleTimeString();
-    completeDateAndTime = completeDateAndTime.replaceAll('/',  ' ');
+    completeDateAndTime = completeDateAndTime.replaceAll('/', ' ');
     completeDateAndTime = completeDateAndTime.split(' ');
     const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     completeDateAndTime[0] = month[completeDateAndTime[0] - 1];
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',  () => {
     document.querySelector('#contact-info').style.display = 'none';
   });
 
-  document.querySelector('#add-link').addEventListener('click',  (e) => {
+  document.querySelector('#add-link').addEventListener('click', () => {
     document.querySelector('#add-link').style.textDecoration = 'underline';
     document.querySelector('.book-form').style.display = 'flex';
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded',  () => {
     document.querySelector('#contact-info').style.display = 'none';
   });
 
-  document.querySelector('#contact-link').addEventListener('click',  (e) => {
+  document.querySelector('#contact-link').addEventListener('click', () => {
     document.querySelector('#contact-link').style.textDecoration = 'underline';
     document.querySelector('#contact-info').style.display = 'Block';
 
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded',  () => {
   });
 
   function bookOnHtmlPage(books) {
-    books.forEach((book,  id) => {
+    books.forEach((book, id) => {
       const bookItem = document.createElement('li');
-      bookItem.setAttribute('id',  `book-item-${id}`);
-      bookItem.setAttribute('class',  'book-item');
+      bookItem.setAttribute('id', `book-item-${id}`);
+      bookItem.setAttribute('class', 'book-item');
       bookItem.innerHTML = `<div class='book-item-div'>
       <div><span><b>'${book.title}'</b></span> <span> by </span>
       <span>${book.author}</span></div>
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded',  () => {
   // Remove a book from the collection.
   function removeFunction() {
     if (collectionOfBooks.length > 0) {
-      collectionOfBooks.forEach((book,  id) => {
-        document.querySelector(`#remove-btn-${id}`).addEventListener('click',  (e) => {
+      collectionOfBooks.forEach((book, id) => {
+        document.querySelector(`#remove-btn-${id}`).addEventListener('click', (e) => {
           e.preventDefault();
           collectionOfBooks = collectionOfBooks.filter((bk) => bk !== book);
-          localStorage.setItem('collectionOfBooks',  JSON.stringify(collectionOfBooks));
+          localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
           document.querySelector(`#book-item-${id}`).remove();
         });
       });
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded',  () => {
   }
 
   if (!localStorage.getItem('collectionOfBooks')) {
-    localStorage.setItem('collectionOfBooks',  JSON.stringify(collectionOfBooks));
+    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
   } else {
     collectionOfBooks = JSON.parse(localStorage.getItem('collectionOfBooks'));
     bookOnHtmlPage(collectionOfBooks);
@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded',  () => {
   removeFunction();
 
   // Add a new book to the collection with title and author.
-  document.querySelector('#submit-btn').addEventListener('click',  (e) => {
+  document.querySelector('#submit-btn').addEventListener('click', (e) => {
     e.preventDefault();
     const title = document.querySelector('#title').value;
     document.querySelector('#title').value = '';
     const author = document.querySelector('#author').value;
     document.querySelector('#author').value = '';
-    collectionOfBooks.push({ title,  author });
-    localStorage.setItem('collectionOfBooks',  JSON.stringify(collectionOfBooks));
+    collectionOfBooks.push({ title, author });
+    localStorage.setItem('collectionOfBooks', JSON.stringify(collectionOfBooks));
     bookOnHtmlPageRemove();
     bookOnHtmlPage(collectionOfBooks);
     removeFunction();
