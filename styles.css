@@ -4,6 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+
   /* height: 100vh;
   position: relative; */
 }
@@ -16,6 +17,7 @@ body {
   width: 85%;
   margin-top: 10px;
   margin-bottom: 20px;
+
   /* background-color: #7e9a9a; */
 }
 
@@ -23,7 +25,7 @@ body {
   width: 80%;
 
   /* background-color: burlywood; */
-  
+
 
   /* border-radius: 20px; */
 
@@ -132,7 +134,6 @@ header {
 
 #navigation-menu {
   list-style: none;
-  
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -175,4 +176,3 @@ footer {
 a:hover {
   text-decoration: underline;
 }
-
