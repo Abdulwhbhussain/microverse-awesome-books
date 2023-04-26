@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('date-container').innerText = completeDateAndTime;
   }
 
-  setInterval(displayTime,  1000);
+  setInterval(displayTime, 1000);
 
   document.querySelector('#list-link').style.textDecoration = 'underline';
   document.querySelector('.book-list-container').style.display = 'Block';
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.book-form').style.display = 'none';
   document.querySelector('#contact-info').style.display = 'none';
 
-  document.querySelector('#list-link').addEventListener('click',  (e) => {
+  document.querySelector('#list-link').addEventListener('click', () => {
     document.querySelector('#list-link').style.textDecoration = 'underline';
     document.querySelector('.book-list-container').style.display = 'Block';
 
