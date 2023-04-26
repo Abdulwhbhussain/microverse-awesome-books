@@ -15,7 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
     completeDateAndTime = completeDateAndTime.split(' ');
     const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     completeDateAndTime[0] = month[completeDateAndTime[0] - 1];
-    completeDateAndTime[1] = completeDateAndTime[1] > 3 ? `${completeDateAndTime[1]}th` : completeDateAndTime[1] === '1' ? `${completeDateAndTime[1]}st` : completeDateAndTime[1] === '2' ? `${completeDateAndTime[1]}nd` : `${completeDateAndTime[1]}rd`;
+    if(completeDateAndTime[1] > 3) {
+        completeDateAndTime[1] = `${completeDateAndTime[1]}th`;
+    }
+    if(completeDateAndTime[1] === 3) {
+        completeDateAndTime[1] = `${completeDateAndTime[1]}rd`;
+    }
+    if(completeDateAndTime[1] === 2) {
+        completeDateAndTime[1] = `${completeDateAndTime[1]}nd`;
+    }
+    if(completeDateAndTime[1] === 1) {
+        completeDateAndTime[1] = `${completeDateAndTime[1]}st`;
+    }
     completeDateAndTime = completeDateAndTime.join(' ');
     document.getElementById('date-container').innerText = completeDateAndTime;
   }
