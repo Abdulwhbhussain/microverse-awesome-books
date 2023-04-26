@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 90%;
 
   /* background-color: burlywood; */
 
@@ -33,61 +33,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+
+  /* border: 2px solid black; */
+  padding-top: 35px;
+  padding-bottom: 35px;
 }
 
 input {
-  margin-bottom: 10px;
-  width: 200px;
+  margin-bottom: 40px;
+  width: 400px;
   border: 2px solid black;
+  height: 30px;
 }
 
 button {
   margin-bottom: 10px;
   border-radius: 2px;
   padding: 1px 10px;
-}
-
-#book-list {
-  list-style: none;
-  padding: 0%;
-  margin: 0%;
-}
-
-.book-list {
-  border: 2px solid black;
-  width: 500px;
-  padding: 0%;
-}
-
-.book-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-li {
-  height: 50px;
-}
-
-.contact-detail {
-  height: auto;
-}
-
-/* #contact-details {
-  margin-bottom: 100px;
-} */
-
-#contact-info {
-  height: 60vh;
-}
-
-.book-item-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 h2,
@@ -98,10 +60,77 @@ h3 {
   margin-bottom: 10px;
 }
 
+.book-list-container {
+  width: 90%;
+}
+
+#book-list {
+  list-style: none;
+  padding: 0%;
+  margin: 0%;
+}
+
+.book-list {
+  border: 2px solid black;
+  width: 100%;
+  padding: 0%;
+}
+
+.book-list-container h1 {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-form h2 {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+li {
+  height: 50px;
+}
+
+.contact-detail {
+  height: auto;
+}
+
+#contact-details {
+  margin-bottom: 85px;
+}
+
+#contact-info {
+  height: auto;
+}
+
+#contact-info h1 {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+#contact-info p {
+  font-size: 25px;
+}
+
+.book-item-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #button-div {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-bottom: 50px;
+  font-size: 20px;
 }
 
 .book-item {
