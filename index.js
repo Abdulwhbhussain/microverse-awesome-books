@@ -3,6 +3,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookList = document.querySelector('#book-list');
   let collectionOfBooks = [];
 
+  // Display Real-time Date and time on web page.
+
+  function displayTime() {
+    const dateAndTime = new Date();
+    let completeDateAndTime = '';
+    completeDateAndTime += dateAndTime.toLocaleDateString();
+    completeDateAndTime += ', ';
+    completeDateAndTime += dateAndTime.toLocaleTimeString();
+    completeDateAndTime = completeDateAndTime.replaceAll('/', ' ');
+    completeDateAndTime = completeDateAndTime.split(' ');
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    completeDateAndTime[0] = month[completeDateAndTime[0] - 1];
+    completeDateAndTime[1] = completeDateAndTime[1] > 3 ? `${completeDateAndTime[1]}th` : completeDateAndTime[1] === '1' ? `${completeDateAndTime[1]}st` : completeDateAndTime[1] === '2' ? `${completeDateAndTime[1]}nd` : `${completeDateAndTime[1]}rd`;
+    completeDateAndTime = completeDateAndTime.join(' ');
+    document.getElementById('date-container').innerText = completeDateAndTime;
+  }
+
+  setInterval(displayTime, 1000);
+
+    document.querySelector('#list-link').style.textDecoration = 'underline';
+    document.querySelector('.book-list-container').style.display = 'Block';
+
+    document.querySelector('#add-link').style.textDecoration = 'none';
+    document.querySelector('#contact-link').style.textDecoration = 'none';
+    document.querySelector('.book-form').style.display = 'none';
+    document.querySelector('#contact-info').style.display = 'none';
+
+  document.querySelector('#list-link').addEventListener('click', (e) => {
+    document.querySelector('#list-link').style.textDecoration = 'underline';
+    document.querySelector('.book-list-container').style.display = 'Block';
+
+    document.querySelector('#add-link').style.textDecoration = 'none';
+    document.querySelector('#contact-link').style.textDecoration = 'none';
+    document.querySelector('.book-form').style.display = 'none';
+    document.querySelector('#contact-info').style.display = 'none';
+  });
+
+  document.querySelector('#add-link').addEventListener('click', (e) => {
+    document.querySelector('#add-link').style.textDecoration = 'underline';
+    document.querySelector('.book-form').style.display = 'flex';
+
+    document.querySelector('#list-link').style.textDecoration = 'none';
+    document.querySelector('#contact-link').style.textDecoration = 'none';
+    document.querySelector('.book-list-container').style.display = 'none';
+    document.querySelector('#contact-info').style.display = 'none';
+  });
+
+  document.querySelector('#contact-link').addEventListener('click', (e) => {
+    document.querySelector('#contact-link').style.textDecoration = 'underline';
+    document.querySelector('#contact-info').style.display = 'Block';
+
+    document.querySelector('#list-link').style.textDecoration = 'none';
+    document.querySelector('#add-link').style.textDecoration = 'none';
+    document.querySelector('.book-list-container').style.display = 'none';
+    document.querySelector('.book-form').style.display = 'none';
+  });
+
   function bookOnHtmlPage(books) {
     books.forEach((book, id) => {
       const bookItem = document.createElement('li');
